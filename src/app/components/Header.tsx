@@ -2,12 +2,18 @@
 
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({
+  onSearch,
+}: {
+  onSearch: (city: string, unit: "C" | "F") => void;
+}) {
   const [city, setCity] = useState("");
   const [unit, setUnit] = useState<"C" | "F">("C");
 
   const handleSearch = () => {
-    console.log(`Searching weather for ${city} in ${unit}`);
+    if (city.trim()) {
+      onSearch(city, unit);
+    }
   };
 
   return (

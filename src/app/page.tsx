@@ -18,7 +18,7 @@ export default function Home() {
   };
   return (
     <main className="min-h-screen bg-gray-100 p-6">
-      {/* <Header /> */}
+      <Header onSearch={handleSearch} />
       <div className="flex flex-col md:flex-row gap-6">
         {/* Left panel - Current Weather */}
         <div className="w-full md:w-1/3">
