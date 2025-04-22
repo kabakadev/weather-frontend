@@ -2,8 +2,16 @@
 import Header from "./components/Header";
 import CurrentWeather from "./components/CurrentWeather";
 import { useState } from "react";
+
+interface WeatherData {
+  icon: string;
+  temperature: number;
+  description: string;
+  location: string;
+  date: string;
+}
 export default function Home() {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
   const handleSearch = async (city: string, unit: "C" | "F") => {
     try {
@@ -11,7 +19,15 @@ export default function Home() {
         `http://localhost:8000/api/weather?city=${city}&unit=${unit}`
       );
       const data = await response.json();
-      console.log(data);
+      setWeatherData({
+        icon: data.icon,
+        temperature: data.temperature,
+        description: data.description,
+        location: data.city,
+        date: new Date().toLocaleDateString("en-US", {
+          weekday: "long",
+        }),
+      });
     } catch (error) {
       console.error("Failed to fetch weather:", error);
     }
