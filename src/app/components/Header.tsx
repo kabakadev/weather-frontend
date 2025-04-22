@@ -18,6 +18,10 @@ export default function Header() {
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
+      {/* Go Button */}
+      <button onClick={handleSearch} className="btn btn-primary">
+        Go
+      </button>
     </div>
   );
 }
