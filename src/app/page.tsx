@@ -7,8 +7,11 @@ interface WeatherData {
   icon: string;
   temperature: number;
   description: string;
-  location: string;
+  city: string;
   date: string;
+  humidity: number;
+  windspeed: number;
+  unit: string;
 }
 export default function Home() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -19,14 +22,21 @@ export default function Home() {
         `http://localhost:8000/api/weather?city=${city}&unit=${unit}`
       );
       const data = await response.json();
+
       setWeatherData({
         icon: data.icon,
         temperature: data.temperature,
         description: data.description,
-        location: data.city,
+        city: data.city,
         date: new Date().toLocaleDateString("en-US", {
           weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
         }),
+        humidity: data.humidity,
+        windspeed: data.windspeed,
+        unit: data.unit,
       });
     } catch (error) {
       console.error("Failed to fetch weather:", error);
@@ -38,7 +48,7 @@ export default function Home() {
       <div className="flex flex-col md:flex-row gap-6">
         {/* Left panel - Current Weather */}
         <div className="w-full md:w-1/3">
-          <CurrentWeather />
+          <CurrentWeather data={weatherData} />
         </div>
         {/*Right panel - other components will be here */}
         <div className="w-full md:w-2/3">
