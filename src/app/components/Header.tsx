@@ -22,6 +22,18 @@ export default function Header() {
       <button onClick={handleSearch} className="btn btn-primary">
         Go
       </button>
+
+      {/*Unit toggle */}
+      <div className="flex items-center gap-2">
+        <span className={unit === "C" ? "font-bold" : "text-gray-500"}>°C</span>
+        <input
+          type="checkbox"
+          className="toggle toggle-primary"
+          checked={unit === "F"}
+          onChange={() => setUnit(unit === "C" ? "F" : "C")}
+        />
+        <span className={unit === "F" ? "font-bold" : "text-gray-500"}>°F</span>
+      </div>
     </div>
   );
 }
