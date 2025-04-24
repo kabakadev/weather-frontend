@@ -16,6 +16,7 @@ type WeatherData = {
   date: string;
   humidity: number;
   wind_speed: number;
+  wind_direction?: number;
   unit: string;
   forecast: ForecastItem[];
 };
@@ -23,6 +24,12 @@ type Props = {
   data: WeatherData | null;
 };
 const CurrentWeather: FC<Props> = ({ data }) => {
+  const getWindDirection = (degrees?: number) => {
+    if (degrees === undefined) return "N/A";
+    const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+    return directions[Math.round(degrees / 45) % 8];
+  };
+
   if (!data) {
     return (
       <div className="flex items-center justify-center h-64 bg-white shadow-md rounded-xl">
@@ -59,7 +66,9 @@ const CurrentWeather: FC<Props> = ({ data }) => {
       {/* Extra info */}
       <div className="flex gap-6 mt-2 text-sm text-gray-600">
         <p>💧 {data.humidity}%</p>
-        <p>💨 {data.wind_speed} m/s</p>
+        <p>
+          💨 {data.wind_speed} m/s {getWindDirection(data.wind_direction)}{" "}
+        </p>
       </div>
     </div>
   );
