@@ -16,18 +16,20 @@ const Forecast = ({ forecast, unit }: ForecastProps) => {
   if (!forecast || forecast.length === 0) return null;
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-xl">
-      <h2 className="mb-4 text-xl font-semibold">3-Day Forecast</h2>
+    <div className="p-6 bg-white shadow-lg rounded-xl">
       <div className="grid grid-cols-3 gap-4">
         {forecast.map((item, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <p className="font-medium">{item.day}</p>
+          <div
+            key={index}
+            className="flex flex-col items-center p-4 transition-shadow duration-300 border rounded-lg hover:shadow-md"
+          >
+            <p className="mb-2 text-lg font-medium">{item.day}</p>
             <img
               src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}
               alt="Weather icon"
-              className="w-12 h-12"
+              className="w-16 h-16 my-2"
             />
-            <div className="flex gap-2">
+            <div className="flex gap-3 text-lg">
               <span className="font-bold">{item.high}°</span>
               <span className="text-gray-500">{item.low}°</span>
             </div>

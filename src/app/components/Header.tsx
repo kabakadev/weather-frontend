@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, KeyboardEvent } from "react";
+import { useState, useEffect, type KeyboardEvent } from "react";
 
 export default function Header({
   onSearch,
@@ -68,12 +68,12 @@ export default function Header({
   };
 
   return (
-    <div className="relative flex flex-col flex-wrap items-center justify-between gap-4 p-4 bg-white shadow-md md:flex-row rounded-xl">
-      <div className="relative w-full md:w-1/2">
+    <div className="flex flex-col items-center justify-between gap-4 p-5 bg-white shadow-lg md:flex-row rounded-xl">
+      <div className="relative w-full md:w-2/3">
         <input
           type="text"
           placeholder="Search city..."
-          className="w-full input input-bordered"
+          className="w-full border-2 input input-ghost-secondary focus:border-blue-500"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -84,7 +84,7 @@ export default function Header({
             {suggestions.map((suggestion, index) => (
               <li
                 key={index}
-                className="p-2 cursor-pointer hover:bg-gray-100"
+                className="p-3 transition-colors duration-200 cursor-pointer hover:bg-gray-100"
                 onClick={() => {
                   setCity(suggestion);
                   handleSearch(suggestion);
@@ -97,35 +97,42 @@ export default function Header({
         )}
       </div>
 
-      <button
-        onClick={() => handleSearch()}
-        className="w-full btn btn-primary md:w-auto"
-        aria-label="Search weather"
-      >
-        Go
-      </button>
-      <div className="flex items-center gap-2">
-        <span
-          className={unit === "C" ? "font-bold" : "text-gray-500"}
-          aria-hidden="true"
+      <div className="flex items-center w-full gap-4 md:w-auto">
+        <button
+          onClick={() => handleSearch()}
+          className="w-full px-6 btn btn-primary md:w-auto"
+          aria-label="Search weather"
         >
-          °C
-        </span>
-        <label className="flex items-center cursor-pointer">
-          <input
-            type="checkbox"
-            className="toggle toggle-primary"
-            checked={unit === "F"}
-            onChange={handleUnitChange}
-            aria-label="Toggle between Celsius and Fahrenheit"
-          />
-        </label>
-        <span
-          className={unit === "F" ? "font-bold" : "text-gray-500"}
-          aria-hidden="true"
-        >
-          °F
-        </span>
+          GO
+        </button>
+
+        <div className="flex items-center gap-2 p-2 bg-gray-100 rounded-lg">
+          <span
+            className={`text-lg transition-colors duration-200 ${
+              unit === "C" ? "text-blue-500 font-bold" : "text-gray-500"
+            }`}
+            aria-hidden="true"
+          >
+            °C
+          </span>
+          <label className="flex items-center mx-1 cursor-pointer">
+            <input
+              type="checkbox"
+              className="toggle toggle-primary"
+              checked={unit === "F"}
+              onChange={handleUnitChange}
+              aria-label="Toggle between Celsius and Fahrenheit"
+            />
+          </label>
+          <span
+            className={`text-lg transition-colors duration-200 ${
+              unit === "F" ? "text-blue-500 font-bold" : "text-gray-500"
+            }`}
+            aria-hidden="true"
+          >
+            °F
+          </span>
+        </div>
       </div>
     </div>
   );

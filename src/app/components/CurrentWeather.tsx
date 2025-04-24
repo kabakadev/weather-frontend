@@ -1,5 +1,5 @@
 "use client";
-import { FC } from "react";
+import type { FC } from "react";
 
 type ForecastItem = {
   day: string;
@@ -32,43 +32,39 @@ const CurrentWeather: FC<Props> = ({ data }) => {
 
   if (!data) {
     return (
-      <div className="flex items-center justify-center h-64 bg-white shadow-md rounded-xl">
-        <p className="text-gray-500">Search for a city to see the weather 🌍</p>
+      <div className="flex items-center justify-center h-64 bg-white shadow-lg rounded-xl">
+        <p className="text-lg text-gray-500">
+          Search for a city to see the weather 🌍
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-3 p-6 bg-white shadow-md rounded-xl">
+    <div className="flex flex-col items-center h-full p-8 bg-white shadow-lg rounded-xl">
       {/* Weather icon from OpenWeatherMap */}
-      <img
-        src={`https://openweathermap.org/img/wn/${data.icon}@2x.png`}
-        alt={data.description}
-        className="w-20 h-20"
-      />
+      <div className="mb-4">
+        <img
+          src={`https://openweathermap.org/img/wn/${data.icon}@4x.png`}
+          alt={data.description}
+          className="w-32 h-32"
+        />
+      </div>
 
       {/* Temperature */}
-      <div className="text-4xl font-bold">
+      <div className="mb-2 text-6xl font-bold">
         {data.temperature}°{data.unit}
       </div>
 
       {/* Description */}
-      <div className="text-xl font-semibold text-gray-700 capitalize">
+      <div className="mb-6 text-2xl font-semibold text-gray-700 capitalize">
         {data.description}
       </div>
 
       {/* Date & Location */}
-      <div className="text-sm text-center text-gray-500">
-        <p>{data.date}</p>
-        <p>{data.city}</p>
-      </div>
-
-      {/* Extra info */}
-      <div className="flex gap-6 mt-2 text-sm text-gray-600">
-        <p>💧 {data.humidity}%</p>
-        <p>
-          💨 {data.wind_speed} m/s {getWindDirection(data.wind_direction)}{" "}
-        </p>
+      <div className="mt-auto text-center text-gray-600">
+        <p className="text-lg font-medium">{data.date}</p>
+        <p className="text-xl font-semibold">{data.city}</p>
       </div>
     </div>
   );
