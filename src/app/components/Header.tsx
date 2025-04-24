@@ -15,7 +15,6 @@ export default function Header({
     return "C";
   });
 
-  // Fetch suggestions when city input changes
   useEffect(() => {
     if (city.length > 2) {
       const timer = setTimeout(() => {
@@ -27,7 +26,6 @@ export default function Header({
     }
   }, [city]);
 
-  // Persist unit preference
   useEffect(() => {
     localStorage.setItem("weatherUnit", unit);
   }, [unit]);
@@ -71,7 +69,6 @@ export default function Header({
 
   return (
     <div className="relative flex flex-col flex-wrap items-center justify-between gap-4 p-4 bg-white shadow-md md:flex-row rounded-xl">
-      {/* Search input with suggestions dropdown */}
       <div className="relative w-full md:w-1/2">
         <input
           type="text"
@@ -100,7 +97,6 @@ export default function Header({
         )}
       </div>
 
-      {/* Go Button - unchanged from your version */}
       <button
         onClick={() => handleSearch()}
         className="w-full btn btn-primary md:w-auto"
@@ -108,8 +104,6 @@ export default function Header({
       >
         Go
       </button>
-
-      {/* Unit toggle - unchanged from your version */}
       <div className="flex items-center gap-2">
         <span
           className={unit === "C" ? "font-bold" : "text-gray-500"}
