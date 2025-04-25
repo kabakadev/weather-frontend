@@ -37,7 +37,7 @@ A responsive weather forecasting web app built with **Next.js**, **TypeScript**,
 ```bash
 # Clone the repository
 git clone https://github.com/kabakadev/weather-frontend
-cd weather-app-frontend
+cd weather-frontend
 
 # Install dependencies
 npm install
