@@ -82,7 +82,7 @@ Expected API Response:
 }
 ```
 
-You can find the backend project [here](https://github.com/kabakadev/flashlearn-backends)
+You can find the backend project [here](https://github.com/kabakadev/weather-backend)
 
 ---
 
