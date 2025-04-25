@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌦️ Weather Forecast Frontend
 
-## Getting Started
+A responsive weather forecasting web app built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Ripple UI**, consuming a Laravel backend API to display real-time weather conditions.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- 🌍 Search weather by city name
+- 🌡️ Toggle between Celsius and Fahrenheit
+- ⛅ Displays:
+  - Current temperature
+  - Weather description and icon
+  - Humidity and wind speed
+  - Location and current date
+- 🔮 Placeholder for 3-day forecast
+- 💅 Fully responsive, clean UI with Ripple UI (Tailwind-based component kit)
+
+---
+
+## 🧱 Tech Stack
+
+| Layer           | Technology                                    |
+| --------------- | --------------------------------------------- |
+| Framework       | [Next.js (App Router)](https://nextjs.org/)   |
+| Language        | [TypeScript](https://www.typescriptlang.org/) |
+| Styling         | [Tailwind CSS](https://tailwindcss.com/)      |
+| UI Kit          | [Ripple UI](https://ripple-ui.com/)           |
+| Runtime         | [Node.js](https://nodejs.org/) (`v20.x`)      |
+| Package Manager | `npm` or `pnpm`                               |
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/weather-app-frontend.git
+cd weather-app-frontend
+
+# Install dependencies
+npm install
+# or
+pnpm install
+```
+
+---
+
+## 🛠️ Development
 
 ```bash
 npm run dev
 # or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then visit [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌐 Backend API Dependency
 
-## Learn More
+This app expects a Laravel backend running at:
 
-To learn more about Next.js, take a look at the following resources:
+```
+GET http://localhost:8000/api/weather?city=Nairobi&unit=C
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Expected API Response:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```json
+{
+  "city": "Nairobi",
+  "temperature": 23,
+  "unit": "C",
+  "description": "Clear sky",
+  "icon": "01d",
+  "humidity": 70,
+  "wind_speed": 4.2,
+  "forecast": []
+}
+```
 
-## Deploy on Vercel
+You can find the backend project [here](https://github.com/yourusername/weather-app-backend) (replace with your actual repo).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Project Structure
+
+```
+📆 app/
+ ├ 📋 page.tsx         # Main page
+ └ 📂 components/
+     ├ 📋 Header.tsx   # City search and unit toggle
+     └ 📋 CurrentWeather.tsx # Displays current weather
+```
+
+---
+
+## 📌 Todo
+
+- [ ] Improve error handling (e.g., invalid cities)
+- [ ] Add loading and fallback UI
+- [ ] Deployment to Netlify
+
+---
+
+## 📄 License
+
+MIT — feel free to use and modify.
+
+---
+
+## 💬 Author
+
+Built with 💙 by Ian
+
+> “Always building, always learning.”
