@@ -13,7 +13,7 @@ A responsive weather forecasting web app built with **Next.js**, **TypeScript**,
   - Weather description and icon
   - Humidity and wind speed
   - Location and current date
-- 🔮 Placeholder for 3-day forecast ➡️ Real-time 3-day forecast
+- ~~🔮 Placeholder for 3-day forecast~~ ➡️ Real-time 3-day forecast
 
 - 💅 Fully responsive, clean UI with Ripple UI (Tailwind-based component kit)
 
