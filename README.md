@@ -64,21 +64,44 @@ Then visit [http://localhost:3000](http://localhost:3000) to view the app.
 This app expects a Laravel backend running at:
 
 ```
-GET http://localhost:8000/api/weather?city=Nairobi&unit=C
+GET http://localhost:8000/api/weather?city=Nairobi&unit=metric
 ```
 
 Expected API Response:
 
 ```json
 {
-  "city": "Nairobi",
-  "temperature": 23,
+  "city": "Nairobi, Nairobi County",
   "unit": "C",
-  "description": "Clear sky",
-  "icon": "01d",
-  "humidity": 70,
-  "wind_speed": 4.2,
-  "forecast": []
+  "temperature": 22,
+  "description": "overcast clouds",
+  "icon": "04d",
+  "humidity": 61,
+  "wind_speed": 3.67,
+  "wind_direction": 80,
+  "forecast": [
+    {
+      "day": "26 Apr",
+      "icon": "01d",
+      "high": 25,
+      "low": 14,
+      "description": "clear sky"
+    },
+    {
+      "day": "27 Apr",
+      "icon": "02d",
+      "high": 26,
+      "low": 14,
+      "description": "few clouds"
+    },
+    {
+      "day": "28 Apr",
+      "icon": "03d",
+      "high": 25,
+      "low": 16,
+      "description": "scattered clouds"
+    }
+  ]
 }
 ```
 
