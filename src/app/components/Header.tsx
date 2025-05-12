@@ -8,13 +8,16 @@ export default function Header({
 }) {
   const [city, setCity] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [unit, setUnit] = useState<"C" | "F">(() => {
-    if (typeof window !== "undefined") {
-      return (localStorage.getItem("weatherUnit") as "C" | "F") || "C";
-    }
-    return "C";
-  });
+  // With this:
+  const [unit, setUnit] = useState<"C" | "F">("C"); // Default to "C"
 
+  useEffect(() => {
+    // This only runs on client side
+    const savedUnit = localStorage.getItem("weatherUnit") as "C" | "F";
+    if (savedUnit) {
+      setUnit(savedUnit);
+    }
+  }, []);
   useEffect(() => {
     if (city.length > 2) {
       const timer = setTimeout(() => {
@@ -33,10 +36,11 @@ export default function Header({
   const fetchCitySuggestions = async (query: string) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/city-suggestions?q=${encodeURIComponent(
-          query
-        )}`
+        `${
+          process.env.NEXT_PUBLIC_API_URL
+        }/city-suggestions?q=${encodeURIComponent(query)}`
       );
+
       const data = await response.json();
       setSuggestions(data);
     } catch (error) {
