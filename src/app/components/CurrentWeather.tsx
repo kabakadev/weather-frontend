@@ -24,12 +24,6 @@ type Props = {
   data: WeatherData | null;
 };
 const CurrentWeather: FC<Props> = ({ data }) => {
-  const getWindDirection = (degrees?: number) => {
-    if (degrees === undefined) return "N/A";
-    const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-    return directions[Math.round(degrees / 45) % 8];
-  };
-
   if (!data) {
     return (
       <div className="flex items-center justify-center h-64 bg-white shadow-lg rounded-xl">

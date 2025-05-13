@@ -30,8 +30,12 @@ const Forecast = ({ forecast, unit }: ForecastProps) => {
               className="w-16 h-16 my-2"
             />
             <div className="flex gap-3 text-lg">
-              <span className="font-bold">{item.high}°</span>
-              <span className="text-gray-500">{item.low}°</span>
+              <span className="font-bold">
+                {item.high}°{unit}
+              </span>
+              <span className="text-gray-500">
+                {item.low}°{unit}
+              </span>
             </div>
           </div>
         ))}
